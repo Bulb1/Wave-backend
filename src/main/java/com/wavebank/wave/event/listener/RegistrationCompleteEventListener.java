@@ -25,8 +25,7 @@ public class RegistrationCompleteEventListener implements
         ApplicationListener<RegistrationCompleteEvent> {
     private final UserService userService;
     //https://docs.spring.io/spring-boot/reference/io/email.html
-    @Autowired
-    private final JavaMailSender mailSender;
+    //private final JavaMailSender mailSender;
     private User theUser;
     @Override
     public void onApplicationEvent(RegistrationCompleteEvent event) {
