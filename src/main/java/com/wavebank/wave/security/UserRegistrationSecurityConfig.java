@@ -34,6 +34,19 @@ public class UserRegistrationSecurityConfig {
                     request.requestMatchers("/register/**").permitAll();
                     request.requestMatchers("/users/**")
                             .hasAnyAuthority("USER", "ADMIN");
+                    request.requestMatchers(
+                            "/api/v1/auth/**",
+                            "/v2/api-docs",
+                            "/v3/api-docs",
+                            "/v3/api-docs/**",
+                            "/swagger-resources",
+                            "/swagger-resources/**",
+                            "/configuration/ui",
+                            "/configuration/security",
+                            "/swagger-ui/**",
+                            "webjars/**",
+                            "swagger-ui.html"
+                            ).permitAll();
                 }).formLogin(Customizer.withDefaults()).build();
 
     }
