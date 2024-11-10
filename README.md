@@ -1,5 +1,6 @@
-run xampp
-sudo /opt/lampp/manager-linux-x64.run
+run xampp <br/>
+##
+sudo /opt/lampp/manager-linux-x64.run 
 
 
 POSTMAN
