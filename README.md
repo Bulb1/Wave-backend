@@ -5,7 +5,7 @@ start <br/>
 MySQL Database <br/>
 Apache Web Server
 
-POSTMAN
+POSTMAN (I prefer swagger<br/>
 connect mysql to postman
 https://github.com/o1lab/xmysql?tab=readme-ov-file
 ##
@@ -31,7 +31,13 @@ Add new user
         "role" : "USER"
     }
 
-
+SWAGGER
+json 
+##
+    http://localhost:9191/v3/api-docs
+swagger-ui
+##
+    http://localhost:9191/swagger-ui/index.html
 to login
 ##
     http://localhost:9191/login
