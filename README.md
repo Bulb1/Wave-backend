@@ -5,7 +5,7 @@ start <br/>
 MySQL Database <br/>
 Apache Web Server
 
-POSTMAN (I prefer swagger<br/>
+POSTMAN<br/>
 connect mysql to postman
 https://github.com/o1lab/xmysql?tab=readme-ov-file
 ##
