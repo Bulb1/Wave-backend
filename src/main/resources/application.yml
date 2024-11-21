@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 1111
 spring:
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/registration_db
@@ -10,6 +10,29 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    open-in-view: true
+    #security configuration
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Wave
+          jwk-set-uri=${spring:
+            security:
+              oauth2:
+                resourceserver:
+          issuer-uri}/protocol/openid-connect/certs:
+          #jwt config
+        auth:
+         converter:
+          resource-id=WaveClient:
+          principal-attribute=principal_username:
+          # Logging Configuration
+        logging:
+          level:
+            org:
+              springframework:
+                security:DEBUG
 # less secure apps and app passwords don't work and will get disabled on 30th september 2024
 #  mail:
 #    host: smtp.gmail.com

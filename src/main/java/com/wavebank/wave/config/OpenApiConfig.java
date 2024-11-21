@@ -26,29 +26,27 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                 description = "Local ENV",
-                url = "http://localhost:9191"
+                url = "http://localhost:1111"
                 )
-//uncomment when JWT added
-//        }//,
-//        //global security scheme
-//        security = {
-//                @SecurityRequirement(
-//                        name = "bearerAuth"
-//                )
+        },
+        //global security scheme
+        security = {
+                @SecurityRequirement(
+                        name = "bearerAuth"
+                )
         }
 )
 /*
 To use a security scheme for each controller, add @SecurityRequirement(name = "bearerAuth") annotation to a controller
  */
-//uncomment when JWT added
-//@SecurityScheme(
-//        name = "bearerAuth",
-//        description = "JWT auth description",
-//        scheme = "bearer",
-//        type = SecuritySchemeType.HTTP,
-//        bearerFormat = "JWT",
-//        in = SecuritySchemeIn.HEADER
-//)
+@SecurityScheme(
+        name = "bearerAuth",
+        description = "JWT auth description",
+        scheme = "bearer",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        in = SecuritySchemeIn.HEADER
+)
 public class OpenApiConfig {
 
 
