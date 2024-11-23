@@ -1,10 +1,10 @@
 server:
-  port: 1111
+  port: ${SERVER_PORT}
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/registration_db
-    username: postgres
-    password: postgres
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,7 +16,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/Wave
+          issuer-uri: ${ISSUER_URI}
           jwk-set-uri=${spring:
             security:
               oauth2:
@@ -27,18 +27,12 @@ spring:
          converter:
           resource-id=WaveClient:
           principal-attribute=principal_username:
-          # Logging Configuration
-        logging:
-          level:
-            org:
-              springframework:
-                security:DEBUG
 # less secure apps and app passwords don't work and will get disabled on 30th september 2024
 #  mail:
 #    host: smtp.gmail.com
 #    port: 587
-#    username: wavebank782@gmail.com
-#    password: o3H2svdL9YJPCAo
+#    username: ${SMTP_USERNAME}
+#    password: ${SMTP_PASSWORD}
 #    properties:
 #      mail:
 #        smtp:

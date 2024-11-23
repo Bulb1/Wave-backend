@@ -11,8 +11,8 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @OpenAPIDefinition(info = @Info(contact = @Contact(
-        name="Bartosz",
-        url = "https://github.com/Bulb1"
+        name="${OPENAPI_CONTACT_NAME}",
+        url = "${OPENAPI_CONTACT_URL}"
         ),
         description = "OpenApi documentation for Wave",
         title = "OpenApi specification",
@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                 description = "Local ENV",
-                url = "http://localhost:1111"
+                url = "${OPENAPI_LOCAL_ENV}"
                 )
         },
         //global security scheme
