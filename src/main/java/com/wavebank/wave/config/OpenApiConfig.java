@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(info = @Info(contact = @Contact(
         name="${OPENAPI_CONTACT_NAME}",
@@ -39,6 +40,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 /*
 To use a security scheme for each controller, add @SecurityRequirement(name = "bearerAuth") annotation to a controller
  */
+@Configuration
 @SecurityScheme(
         name = "bearerAuth",
         description = "JWT auth description",
@@ -47,7 +49,4 @@ To use a security scheme for each controller, add @SecurityRequirement(name = "b
         bearerFormat = "JWT",
         in = SecuritySchemeIn.HEADER
 )
-public class OpenApiConfig {
-
-
-}
+public class OpenApiConfig {}

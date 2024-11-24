@@ -20,17 +20,11 @@ public class UserController {
     private final UserService userService;
 
     @Operation(
-            description = "Get enpoint for user",
-            summary = "This is a summary for user get endpoint",
+            summary = "Retrieve users",
+            description = "Fetches a list of all users.",
             responses = {
-                    @ApiResponse(
-                            description = "Success",
-                            responseCode = "200"
-                    ),
-                    @ApiResponse(
-                            description = "Unauthorized / Invalid Token",
-                            responseCode = "403"
-                    )
+                    @ApiResponse(responseCode = "200", description = "Request successful"),
+                    @ApiResponse(responseCode = "403", description = "Unauthorized or invalid token")
             }
     )
 

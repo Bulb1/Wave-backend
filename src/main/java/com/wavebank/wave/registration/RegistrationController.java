@@ -5,6 +5,9 @@ import com.wavebank.wave.registration.token.VerificationToken;
 import com.wavebank.wave.registration.token.VerificationTokenRepository;
 import com.wavebank.wave.user.User;
 import com.wavebank.wave.user.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -18,7 +21,7 @@ import java.util.Calendar;
 @RequiredArgsConstructor
 //Maps all requests with the URL /register to this controller, a base URL in this controller
 @RequestMapping("/register")
-
+@Tag(name = "Registration")
 public class RegistrationController {
 
     private final UserService userService;
@@ -26,6 +29,13 @@ public class RegistrationController {
     private final VerificationTokenRepository tokenRepository;
     //shortcut for @RequestMapping(method = RequestMethod.POST)
     //https://en.wikipedia.org/wiki/POST_(HTTP)
+    @Operation(
+            summary = "Register a new user",
+            description = "Accepts registration details, creates a new user in the database, and triggers a verification email.",
+            responses = {
+            @ApiResponse(responseCode = "200", description = "User registered successfully. Verification email sent."),
+            @ApiResponse(responseCode = "400", description = "Invalid registration details.")
+    })
     @PostMapping
 
     /* Endpoint Method
@@ -42,6 +52,14 @@ public class RegistrationController {
         return "Success! Please, check your email for verification link.";
 
     }
+    @Operation(
+            summary = "Verify email with a token",
+            description = "Verifies the user's email using the provided token. If valid, enables the user's account.",
+            responses = {
+            @ApiResponse(responseCode = "200", description = "Email verified successfully."),
+            @ApiResponse(responseCode = "400", description = "Invalid or expired token."),
+            @ApiResponse(responseCode = "409", description = "Account already verified.")
+    })
     @GetMapping("/verifyEmail")
     public String verifyEmail(@RequestParam("token")String token) {
         VerificationToken theToken = tokenRepository.findByToken(token);
