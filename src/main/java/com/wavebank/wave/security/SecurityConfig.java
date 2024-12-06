@@ -63,6 +63,7 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // OAuth2 Resource Server configuration
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtConverter)))
+                //TODO: add OAuthLogin 
                 // Optional form login for user registration
                 .formLogin(Customizer.withDefaults())
                 .build();
