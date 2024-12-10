@@ -1,4 +1,11 @@
 services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 1111:1111
+    depends_on:
+      - postgres
   postgres:
     image: postgres
     container_name: wave-registration_db
