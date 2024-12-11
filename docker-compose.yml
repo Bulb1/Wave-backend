@@ -4,6 +4,9 @@ services:
     restart: always
     ports:
       - 1111:1111
+    environment:
+      SERVER_PORT: 1111
+      ISSUER_URI: http://localhost:8080/realms/Wave
     depends_on:
       - postgres
   postgres:
