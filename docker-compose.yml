@@ -2,6 +2,7 @@ services:
   server:
     build: .
     restart: always
+    container_name: wave-server
     ports:
       - 1111:1111
     environment:
@@ -21,6 +22,23 @@ services:
       - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  keycloak:
+    image: keycloak/keycloak:latest
+    container_name: wave-keycloak
+    restart: always
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: registration_db
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
 volumes:
   postgres_data:
     driver: local
